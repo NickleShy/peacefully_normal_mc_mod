@@ -123,11 +123,13 @@ removed_mobs = [
 ### Added
 - Rebuilt mod in IntelliJ using Forge 47.4.0 (Java 17).  
 - Organized structure:
+  ```
   peacefullynormal/
   ├── config/
   ├── client/
   ├── event/
   └── command/
+  ```
 - Introduced modular event handling and proper side separation.
 
 ---
