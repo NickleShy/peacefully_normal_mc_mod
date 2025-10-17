@@ -2,7 +2,52 @@
 
 ---
 
-## v0.11.005 (Current)
+## v0.11.009 (Current)
+
+### Summary
+Fixed texture overlay issue by making the mod replace textures instead of overlaying them.
+
+---
+
+## v0.11.008
+
+### Summary
+Quick “nuke the glow” test
+Force it to normal-lit, no-translucency, just to prove this isn’t our code doing emissive:
+Change the RenderType line to:
+```
+RenderType rt = RenderType.entityCutout(texture);
+```
+
+---
+
+## v0.11.007
+
+### Fixed
+- **B11.0**  Fixed missing textures (namespace corrected).
+
+---
+
+## v0.11.006
+
+### Summary
+Designed mod to override FreshAnimations custom textures for: 
+FreshAnimations_v1.10.1.zip\assets\minecraft\textures\entity\creeper
+----creeper 
+FreshAnimations_v1.10.1.zip\assets\minecraft\textures\entity\zombie 
+----drowned 
+----drowned_outer_layer 
+----husk 
+----zombie 
+FreshAnimations_v1.10.1.zip\assets\minecraft\textures\entity 
+----witch 
+
+### Added
+
+
+---
+
+## v0.11.005
 
 ### Summary
 Stabilized client/server parity, reintroduced creeper hiss and blink, fixed in-game config behavior, and restored all textures.  
