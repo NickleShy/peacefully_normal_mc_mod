@@ -5,45 +5,63 @@
 ## v0.11.009 (Current)
 
 ### Summary
-Fixed texture overlay issue by making the mod replace textures instead of overlaying them.
+Resolved lingering texture overlay issues by switching from layered rendering to full texture replacement.  
+Now fully compatible with emissive/animated resource packs like *FreshAnimations* without visual conflicts.
+
+### Fixed
+- **B12.0** Overlay transparency and lighting inconsistencies resolved.  
+- Creeper and zombie textures now display as intended under all lighting conditions.
 
 ---
 
 ## v0.11.008
 
 ### Summary
-Quick “nuke the glow” test
-Force it to normal-lit, no-translucency, just to prove this isn’t our code doing emissive:
-Change the RenderType line to:
+Internal rendering test build.  
+Temporarily disabled glow/emissive effects to isolate texture pipeline conflicts.
+
+### Technical Note
+Changed the render call for affected entities to:
 ```
 RenderType rt = RenderType.entityCutout(texture);
 ```
+*(This version was experimental and not intended for release.)*
 
 ---
 
 ## v0.11.007
 
 ### Fixed
-- **B11.0**  Fixed missing textures (namespace corrected).
+- **B11.0**  Fixed missing textures (Corrected texture namespace paths).
+- Ensured all creeper and zombie texture lookups resolve to `assets/peacefullynormal/` instead of `minecraft/`.
 
 ---
 
 ## v0.11.006
 
 ### Summary
-Designed mod to override FreshAnimations custom textures for: 
-FreshAnimations_v1.10.1.zip\assets\minecraft\textures\entity\creeper
-----creeper 
-FreshAnimations_v1.10.1.zip\assets\minecraft\textures\entity\zombie 
-----drowned 
-----drowned_outer_layer 
-----husk 
-----zombie 
-FreshAnimations_v1.10.1.zip\assets\minecraft\textures\entity 
-----witch 
+Introduced compatibility layer for FreshAnimations v1.10.1 by overriding its entity texture references.
+The mod now safely replaces target textures during resource load, ensuring Peacefully Normal visuals always take priority.
 
 ### Added
-
+- Texture Override System
+  - Added logic to detect and replace specific FreshAnimations textures:
+    ```
+    FreshAnimations_v1.10.1.zip\assets\minecraft\textures\entity\creeper
+    ----creeper 
+    FreshAnimations_v1.10.1.zip\assets\minecraft\textures\entity\zombie 
+    ----drowned 
+    ----drowned_outer_layer 
+    ----husk 
+    ----zombie 
+    FreshAnimations_v1.10.1.zip\assets\minecraft\textures\entity 
+    ----witch
+    ```
+  - Integrated through new helper logic in PNTextureOverrides.java.
+  - Ensures mod visuals are consistent even when high-priority resource packs are present.
+- Logging Enhancements
+  - Added startup console notices for texture override detection.
+  - Displays count of replaced textures and fallback status.
 
 ---
 
